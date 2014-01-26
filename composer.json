@@ -1,0 +1,16 @@
+{
+	"name": "kohabi/usps",
+	"description": "USPS API",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "kohabi",
+			"email": "kohabi.mail@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Kohabi\\USPS\\": "src/"
+		}
+	}
+}
