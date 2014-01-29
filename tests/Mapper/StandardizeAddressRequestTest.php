@@ -4,7 +4,7 @@ namespace Kohabi\USPS\Mapper;
 
 use Kohabi\USPS\Address;
 
-class StandardizeAddressTest extends \PHPUnit_Framework_TestCase
+class StandardizeAddressRequestTest extends \PHPUnit_Framework_TestCase
 {
     private $mapper;
 
