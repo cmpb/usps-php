@@ -118,4 +118,22 @@ class Address
     {
         return $this->postalCode;
     }
+
+    public function getZip5()
+    {
+        $parts = explode('-', $this->postalCode);
+        if (isset($parts[0])) {
+            return $parts[0];
+        }
+        return null;
+    }
+
+    public function getZip4()
+    {
+        $parts = explode('-', $this->postalCode);
+        if (isset($parts[1])) {
+            return $parts[1];
+        }
+        return null;
+    }
 }
