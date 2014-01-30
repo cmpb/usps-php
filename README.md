@@ -3,7 +3,7 @@ php-usps
 
 The USPS WebTools Client API implemented in PHP
 
-## Example Usage
+### Example Usage
 ```php
 $usps = new Kohabi\USPS\API(
 	new Guzzle\Http\Client(),
