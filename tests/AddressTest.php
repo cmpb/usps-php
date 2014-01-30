@@ -147,4 +147,25 @@ class AddressTest extends \PHPUnit_Framework_TestCase
         $this->address->setPostalCode('94521-1234');
         $this->assertEquals('1234', $this->address->getZip4());
     }
+
+    public function testSetZip5()
+    {
+        $this->address->setZip5('12345');
+        $this->assertEquals('12345', $this->address->getZip5());
+        $this->assertEquals('12345', $this->address->getPostalCode());
+    }
+
+    public function testSetZip4()
+    {
+        $this->address->setZip4('1234');
+        $this->assertEquals('1234', $this->address->getZip4());
+        $this->assertEquals(null, $this->address->getPostalCode());
+    }
+
+    public function testSetZip5AndZip4AndGetPostalCode()
+    {
+        $this->address->setZip5('12345');
+        $this->address->setZip4('1234');
+        $this->assertEquals('12345-1234', $this->address->getPostalCode());
+    }
 }

@@ -12,6 +12,8 @@ class Address
     private $state;
     private $city;
     private $postalCode;
+    private $zip5;
+    private $zip4;
 
     public function setCompany($company)
     {
@@ -145,27 +147,61 @@ class Address
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+        $this->zip5 = null;
+        $this->zip4 = null;
     }
 
     public function getPostalCode()
     {
-        return $this->postalCode;
+        if ($this->postalCode) {
+            return $this->postalCode;
+        }
+        if ($this->zip5) {
+            if ($this->zip4) {
+                return $this->zip5 . '-' . $this->zip4;
+            } else {
+                return $this->zip5;
+            }
+        }
+        return null;
+    }
+
+    public function setZip5($zip5)
+    {
+        $this->zip5 = $zip5;
+        $this->postalCode = null;
+    }
+
+    public function setZip4($zip4)
+    {
+        $this->zip4 = $zip4;
+        $this->postalCode = null;
     }
 
     public function getZip5()
     {
-        $parts = explode('-', $this->postalCode);
-        if (isset($parts[0])) {
-            return $parts[0];
+        if ($this->zip5) {
+            return $this->zip5;
+        }
+        if ($this->postalCode) {
+            $parts = explode('-', $this->postalCode);
+            if (isset($parts[0])) {
+                return $this->zip5 = $parts[0];
+            }
         }
         return null;
     }
 
     public function getZip4()
     {
-        $parts = explode('-', $this->postalCode);
-        if (isset($parts[1])) {
-            return $parts[1];
+        if ($this->zip4) {
+            return $this->zip4;
+        }
+        if ($this->postalCode) {
+            $parts = explode('-', $this->postalCode);
+            if (isset($parts[1])) {
+                return $this->zip4 = $parts[1];
+            }
         }
         return null;
     }
