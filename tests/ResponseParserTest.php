@@ -11,17 +11,17 @@ class ResponseParserTest extends \PHPUnit_Framework_TestCase
         $this->parser = new ResponseParser();
     }
 
-    /**
-     * @expectedException Kohabi\USPS\APIException
-     * @expectedExceptionMessage Error Description
-     * @expectedExceptionCode 11
-     */
     public function testAPIError()
     {
         $response = '<Error>
                         <Number>11</Number>
                         <Description>Error Description</Description>
                      </Error>';
+        $this->setExpectedException(
+            'Kohabi\USPS\APIException',
+            'Error Description',
+            11
+        );
         $this->parser->parse($response);
     }
 
