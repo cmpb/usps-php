@@ -39,3 +39,8 @@ Tests read the USPS_USER environment variable to find the userid.
 # example API test
 USPS_USER='MY_USER' phpunit tests/APITest
 ```
+
+### Implemented APIs
+
+- Address Information
+	- Address Standardization/Verification: API::standardizeAddress
