@@ -1,4 +1,4 @@
-php-usps
+kohabi/usps
 ========
 
 The USPS WebTools Client API implemented in PHP
