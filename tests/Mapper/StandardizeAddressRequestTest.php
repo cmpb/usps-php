@@ -16,7 +16,7 @@ class StandardizeAddressRequestTest extends \PHPUnit_Framework_TestCase
     public function testExample1()
     {
         $address = new Address();
-        $address->addLine('6406 Ivy Lane');
+        $address->setLine1('6406 Ivy Lane');
         $address->setCity('Greenbelt');
         $address->setState('MD');
         $expected = '<AddressValidateRequest USERID="123">' .

@@ -17,11 +17,11 @@ class APITest extends \PHPUnit_Framework_TestCase
     public function testStandardizeAddress()
     {
         $address = new Address();
-        $address->addLine('6406 Ivy Lane');
+        $address->setLine1('6406 Ivy Lane');
         $address->setCity('Greenbelt');
         $address->setState('MD');
         $res = $this->api->standardizeAddress($address);
-        $this->assertEquals('6406 IVY LN', $res->getLine(0));
+        $this->assertEquals('6406 IVY LN', $res->getLine1());
         $this->assertEquals('GREENBELT', $res->getCity());
         $this->assertEquals('MD', $res->getState());
         $this->assertEquals('20770-1441', $res->getPostalCode());

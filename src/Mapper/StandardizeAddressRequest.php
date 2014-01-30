@@ -10,8 +10,8 @@ class StandardizeAddressRequest
     {
         $xml = '<AddressValidateRequest USERID="' . $user . '">';
         $xml .= '<Address>';
-        $xml .= '<Address1>' . $address->getLine(1) . '</Address1>';
-        $xml .= '<Address2>' . $address->getLine(0) . '</Address2>';
+        $xml .= '<Address1>' . $address->getLine2() . '</Address1>';
+        $xml .= '<Address2>' . $address->getLine1() . '</Address2>';
         $xml .= '<City>' . $address->getCity() . '</City>';
         $xml .= '<State>' . $address->getState() . '</State>';
         $xml .= '<Zip5>' . $address->getZip5() . '</Zip5>';

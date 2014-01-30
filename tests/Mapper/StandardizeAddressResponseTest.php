@@ -4,7 +4,7 @@ namespace Kohabi\USPS\Mapper;
 
 use Kohabi\USPS\ResponseParser;
 
-class StandardizeAddressRequestTest extends \PHPUnit_Framework_TestCase
+class StandardizeAddressResponseTest extends \PHPUnit_Framework_TestCase
 {
     private $mapper;
 
@@ -26,7 +26,7 @@ class StandardizeAddressRequestTest extends \PHPUnit_Framework_TestCase
                '</AddressValidateResponse>';
         $parser = new ResponseParser();
         $address = $this->mapper->map($parser->parse($xml));
-        $this->assertEquals('6406 IVY LN', $address->getLine(0));
+        $this->assertEquals('6406 IVY LN', $address->getLine1());
         $this->assertEquals('GREENBELT', $address->getCity());
         $this->assertEquals('MD', $address->getState());
         $this->assertEquals('20770', $address->getZip5());
