@@ -6,9 +6,9 @@ use Kohabi\USPS\Address;
 
 class StandardizeAddress
 {
-    public function map($user, Address $address)
+    public function map($userid, Address $address)
     {
-        $xml = '<AddressValidateRequest USERID="' . $user . '">';
+        $xml = '<AddressValidateRequest USERID="' . $userid . '">';
         $xml .= '<Address>';
         $xml .= '<Address1>' . $address->getLine2() . '</Address1>';
         $xml .= '<Address2>' . $address->getLine1() . '</Address2>';

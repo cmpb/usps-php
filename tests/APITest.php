@@ -8,10 +8,10 @@ class APITest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $user = getenv('USPS_USER');
+        $userid = getenv('USPS_USER');
         $client = new \Guzzle\Http\Client();
         $client->setSslVerification(true, true, 2);
-        $this->api = new API($client, $user, $testing = true);
+        $this->api = new API($client, $userid, $testing = true);
     }
 
     public function testStandardizeAddress()

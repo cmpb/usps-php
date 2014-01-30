@@ -7,13 +7,13 @@ use Guzzle\Http\ClientInterface;
 class API
 {
     private $client;
-    private $user;
+    private $userid;
     private $testing;
 
-    public function __construct(ClientInterface $client, $user, $testing)
+    public function __construct(ClientInterface $client, $userid, $testing)
     {
         $this->client = $client;
-        $this->user = $user;
+        $this->userid = $userid;
         $this->testing = $testing;
     }
 
@@ -41,7 +41,7 @@ class API
     {
         $requestMapper = new RequestMapper\StandardizeAddress();
         $responseMapper = new ResponseMapper\StandardizeAddress();
-        $xml = $requestMapper->map($this->user, $address);
+        $xml = $requestMapper->map($this->userid, $address);
         $body = $this->request('Verify', $xml);
         return $responseMapper->map($body);
     }
