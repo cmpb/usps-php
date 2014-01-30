@@ -1,6 +1,6 @@
 <?php
 
-namespace Kohabi\USPS\Mapper\Request;
+namespace Kohabi\USPS\RequestMapper;
 
 use Kohabi\USPS\Address;
 
