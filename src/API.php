@@ -9,12 +9,16 @@ class API
     private $client;
     private $userid;
     private $testing;
+    private $xmlParser;
+    private $errorChecker;
 
     public function __construct(ClientInterface $client, $userid, $testing)
     {
         $this->client = $client;
         $this->userid = $userid;
         $this->testing = $testing;
+        $this->xmlParser = new XMLParser();
+        $this->errorChecker = new ErrorChecker();
     }
 
     private function getURL()
@@ -29,10 +33,11 @@ class API
         $request->getQuery()->set('API', $api);
         $request->getQuery()->set('XML', $xml);
         $response = $request->send();
-        $responseParser = new ResponseParser();
         if ($response->isSuccessful()) {
             $body = $response->getBody(true);
-            return $responseParser->parse($body);
+            $data = $this->xmlParser->parse($body);
+            $this->errorChecker->check($data);
+            return $data;
         }
         throw new APIException('Request failed');
     }

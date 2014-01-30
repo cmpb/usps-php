@@ -2,30 +2,16 @@
 
 namespace Kohabi\USPS;
 
-class ResponseParserTest extends \PHPUnit_Framework_TestCase
+class XMLParserTest extends \PHPUnit_Framework_TestCase
 {
-    private $parser;
+    private $xmlParser;
 
     protected function setUp()
     {
-        $this->parser = new ResponseParser();
+        $this->xmlParser = new XMLParser();
     }
 
-    public function testAPIError()
-    {
-        $response = '<Error>
-                        <Number>11</Number>
-                        <Description>Error Description</Description>
-                     </Error>';
-        $this->setExpectedException(
-            'Kohabi\USPS\APIException',
-            'Error Description',
-            11
-        );
-        $this->parser->parse($response);
-    }
-
-    public function testAddressResponse()
+    public function testExample1()
     {
         $response = '<AddressValidateResponse>
                         <Address ID="0">
@@ -37,7 +23,9 @@ class ResponseParserTest extends \PHPUnit_Framework_TestCase
                             <Zip4>1441</Zip4>
                         </Address>
                     </AddressValidateResponse>';
-        $res = $this->parser->parse($response);
+        
+        $res = $this->xmlParser->parse($response);
+        
         $this->assertEquals('0', $res->Address['ID']);
         $this->assertEquals('XYZ Corp.', $res->Address->FirmName);
         $this->assertEquals('6406 IVY LN', $res->Address->Address2);
