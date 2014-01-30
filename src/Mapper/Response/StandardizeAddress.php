@@ -1,10 +1,10 @@
 <?php
 
-namespace Kohabi\USPS\Mapper;
+namespace Kohabi\USPS\Mapper\Response;
 
 use Kohabi\USPS\Address;
 
-class StandardizeAddressResponse
+class StandardizeAddress
 {
     public function map($response)
     {

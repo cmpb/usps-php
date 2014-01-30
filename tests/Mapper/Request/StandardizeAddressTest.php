@@ -1,16 +1,16 @@
 <?php
 
-namespace Kohabi\USPS\Mapper;
+namespace Kohabi\USPS\Mapper\Request;
 
 use Kohabi\USPS\Address;
 
-class StandardizeAddressRequestTest extends \PHPUnit_Framework_TestCase
+class StandardizeAddressTest extends \PHPUnit_Framework_TestCase
 {
     private $mapper;
 
     protected function setUp()
     {
-        $this->mapper = new StandardizeAddressRequest();
+        $this->mapper = new StandardizeAddress();
     }
 
     public function testExample1()

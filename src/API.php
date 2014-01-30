@@ -39,8 +39,8 @@ class API
 
     public function standardizeAddress(Address $address)
     {
-        $requestMapper = new Mapper\StandardizeAddressRequest();
-        $responseMapper = new Mapper\StandardizeAddressResponse();
+        $requestMapper = new Mapper\Request\StandardizeAddress();
+        $responseMapper = new Mapper\Response\StandardizeAddress();
         $xml = $requestMapper->map($this->user, $address);
         $body = $this->request('Verify', $xml);
         return $responseMapper->map($body);
