@@ -43,4 +43,8 @@ USPS_USER='MY_USER' phpunit tests/APITest
 ### Implemented APIs
 
 - Address Information
-	- Address Standardization/Verification: API::standardizeAddress
+	- Address Standardization/Verification
+
+	  ```php
+	  $usps->standardizeAddress($address);
+	  ```
