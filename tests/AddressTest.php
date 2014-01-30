@@ -73,6 +73,34 @@ class AddressTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(null, $this->address->getLine(5));
     }
 
+    public function testSetLine()
+    {
+        $this->address->setLine(0, 'Line1');
+        $this->address->setLine(1, 'Line2');
+        $this->address->setLine(2, 'Line3');
+        $expected = array('Line1', 'Line2', 'Line3');
+        $actual = $this->address->getLines();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testGetAndSetLine1()
+    {
+        $line1 = '123 Real St';
+        $this->address->setLine1($line1);
+        $this->assertEquals($line1, $this->address->getLine1());
+        $this->address->setLines(array($line1));
+        $this->assertEquals($line1, $this->address->getLine1());
+    }
+
+    public function testGetAndSetLine2()
+    {
+        $line2 = '123 Real St';
+        $this->address->setLine2($line2);
+        $this->assertEquals($line2, $this->address->getLine2());
+        $this->address->setLines(array('Line 1', $line2));
+        $this->assertEquals($line2, $this->address->getLine2());
+    }
+
     public function testState()
     {
         $state = 'California';
