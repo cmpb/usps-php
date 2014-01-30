@@ -28,8 +28,11 @@ echo $result->getZip4(); // 1440
 ### Running Tests
 
 Tests are written using PHPUnit.
+
 Remote tests depend on Guzzle and a USPS account.
+
 You will need an account with given privileges for each API and secure server.
+
 Tests read the USPS_USER environment variable to find the userid.
 
 ```bash
