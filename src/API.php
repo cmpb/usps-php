@@ -50,4 +50,13 @@ class API
         $body = $this->request('Verify', $xml);
         return $responseMapper->map($body);
     }
+
+    public function zipCodeLookup(Address $address)
+    {
+        $requestMapper = new RequestMapper\ZipCodeLookup();
+        $responseMapper = new ResponseMapper\ZipCodeLookup();
+        $xml = $requestMapper->map($this->userid, $address);
+        $body = $this->request('ZipCodeLookup', $xml);
+        return $responseMapper->map($body);
+    }
 }

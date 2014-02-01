@@ -26,4 +26,21 @@ class APITest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('MD', $res->getState());
         $this->assertEquals('20770-1441', $res->getPostalCode());
     }
+
+    public function testZipCodeLookup()
+    {
+        $this->markTestIncomplete('API Code Not Recognized');
+        $address = new Address();
+        $address->setLine1('6406 Ivy Lane');
+        $address->setCity('Greenbelt');
+        $address->setState('MD');
+
+        $result = $this->api->zipCodeLookup($address);
+
+        $this->assertEquals('6406 IVY LN', $result->getLine1());
+        $this->assertEquals('GREENBELT', $result->getCity());
+        $this->assertEquals('MD', $result->getState());
+        $this->assertEquals('20770', $result->getZip5());
+        $this->assertEquals('1440', $result->getZip4());
+    }
 }
