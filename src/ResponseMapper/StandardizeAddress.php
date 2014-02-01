@@ -2,7 +2,7 @@
 
 namespace Kohabi\USPS\ResponseMapper;
 
-use Kohabi\USPS\Address;
+use Kohabi\USPS\Model\Address;
 
 class StandardizeAddress
 {

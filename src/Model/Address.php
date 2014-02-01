@@ -1,6 +1,6 @@
 <?php
 
-namespace Kohabi\USPS;
+namespace Kohabi\USPS\Model;
 
 class Address
 {

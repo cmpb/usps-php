@@ -3,6 +3,7 @@
 namespace Kohabi\USPS;
 
 use Guzzle\Http\ClientInterface;
+use Kohabi\USPS\Model\Address;
 
 class API
 {

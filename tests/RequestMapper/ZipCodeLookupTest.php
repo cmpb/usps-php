@@ -2,7 +2,7 @@
 
 namespace Kohabi\USPS\RequestMapper;
 
-use Kohabi\USPS\Address;
+use Kohabi\USPS\Model\Address;
 
 class ZipCodeLookupTest extends \PHPUnit_Framework_TestCase
 {

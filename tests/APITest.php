@@ -2,6 +2,8 @@
 
 namespace Kohabi\USPS;
 
+use Kohabi\USPS\Model\Address;
+
 class APITest extends \PHPUnit_Framework_TestCase
 {
     private $api;
