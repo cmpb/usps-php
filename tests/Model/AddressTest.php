@@ -11,52 +11,44 @@ class AddressTest extends \PHPUnit_Framework_TestCase
         $this->address = new Address();
     }
 
-    public function testCompany()
+    public function testSetAndGetCompany()
     {
-        $company = 'ABC Company';
-        $this->address->setCompany($company);
-        $this->assertEquals($company, $this->address->getCompany());
+        $this->address->setCompany('XYZ Corp');
+        $this->assertEquals('XYZ Corp', $this->address->getCompany());
     }
 
-    public function testFullName()
+    public function testSetAndGetFirstName()
     {
-        $name = 'John Carter';
-        $this->address->setFullName($name);
-        $this->assertEquals($name, $this->address->getFullName());
+        $this->address->setFirstName('John');
+        $this->assertEquals('John', $this->address->getFirstName());
     }
 
-    public function testFirstName()
+    public function testSetAndGetLastName()
     {
-        $name = 'John';
-        $this->address->setFirstName($name);
-        $this->assertEquals($name, $this->address->getFirstName());
+        $this->address->setLastName('Doe');
+        $this->assertEquals('Doe', $this->address->getLastName());
     }
 
-    public function testLastName()
+    public function testSetAndGetName()
     {
-        $name = 'Carter';
-        $this->address->setLastName($name);
-        $this->assertEquals($name, $this->address->getLastName());
+        $this->address->setName('John Doe');
+        $this->assertEquals('John Doe', $this->address->getName());
     }
 
-    public function testGetFullName()
+    public function testSetFirstAndLastAndGetName()
     {
-        $firstName = 'John';
-        $lastName = 'Carter';
-        $fullName = $firstName . ' ' . $lastName;
-        $this->address->setFirstName($firstName);
-        $this->address->setLastName($lastName);
-        $this->assertEquals($fullName, $this->address->getFullName());
+        $this->address->setFirstName('John');
+        $this->address->setLastName('Doe');
+        $this->assertEquals('John Doe', $this->address->getName());
     }
 
-    public function testLines()
+    public function testSetAndGetLines()
     {
-        $lines = array('Line 1', 'Line 2');
-        $this->address->setLines($lines);
-        $this->assertEquals($lines, $this->address->getLines());
+        $this->address->setLines(array('A', 'B'));
+        $this->assertEquals(array('A', 'B'), $this->address->getLines());
     }
 
-    public function testAddLines()
+    public function testAddLineAndGetLinesAndGetLine()
     {
         $lines = array('Line 1', 'Line 2');
         foreach ($lines as $line) {
@@ -73,7 +65,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(null, $this->address->getLine(5));
     }
 
-    public function testSetLine()
+    public function testSetLineAndGetLines()
     {
         $this->address->setLine(0, 'Line1');
         $this->address->setLine(1, 'Line2');
@@ -101,39 +93,34 @@ class AddressTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($line2, $this->address->getLine2());
     }
 
-    public function testState()
+    public function testSetAndGetState()
     {
-        $state = 'California';
-        $this->address->setState($state);
-        $this->assertEquals($state, $this->address->getState());
+        $this->address->setState('CA');
+        $this->assertEquals('CA', $this->address->getState());
     }
 
-    public function testProvince()
+    public function testSetAndGetProvince()
     {
-        $province = 'Province';
-        $this->address->setProvince($province);
-        $this->assertEquals($province, $this->address->getProvince());
+        $this->address->setProvince('CA');
+        $this->assertEquals('CA', $this->address->getProvince());
     }
 
-    public function testStateAndProvinceAreSame()
+    public function testSetStateAndGetProvince()
     {
-        $state = 'California';
-        $this->address->setState($state);
-        $this->assertEquals($state, $this->address->getProvince());
+        $this->address->setState('CA');
+        $this->assertEquals('CA', $this->address->getProvince());
     }
 
-    public function testCity()
+    public function testSetAndGetCity()
     {
-        $city = 'LA';
-        $this->address->setCity($city);
-        $this->assertEquals($city, $this->address->getCity());
+        $this->address->setCity('LA');
+        $this->assertEquals('LA', $this->address->getCity());
     }
 
-    public function testPostalCode()
+    public function testSetAndGetPostalCode()
     {
-        $postalCode = '5555';
-        $this->address->setPostalCode($postalCode);
-        $this->assertEquals($postalCode, $this->address->getPostalCode());
+        $this->address->setPostalCode('12345');
+        $this->assertEquals('12345', $this->address->getPostalCode());
     }
 
     public function testGetZip5()

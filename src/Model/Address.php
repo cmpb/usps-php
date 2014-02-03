@@ -25,25 +25,10 @@ class Address
         return $this->company;
     }
 
-    public function setFullName($fullName)
-    {
-        $this->fullName = $fullName;
-    }
-
-    public function getFullName()
-    {
-        if ($this->fullName) {
-            return $this->fullName;
-        }
-        if ($this->firstName && $this->lastName) {
-            return $this->firstName . ' ' . $this->lastName;
-        }
-        return null;
-    }
-
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+        $this->fullName = null;
     }
 
     public function getFirstName()
@@ -54,11 +39,28 @@ class Address
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+        $this->fullName = null;
     }
 
     public function getLastName()
     {
         return $this->lastName;
+    }
+
+    public function setName($name)
+    {
+        $this->fullName = $name;
+    }
+
+    public function getName()
+    {
+        if ($this->fullName) {
+            return $this->fullName;
+        }
+        if ($this->firstName && $this->lastName) {
+            return $this->fullName = $this->firstName . ' ' . $this->lastName;
+        }
+        return null;
     }
 
     public function setLines(array $lines)
