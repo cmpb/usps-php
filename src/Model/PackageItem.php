@@ -8,6 +8,8 @@ class PackageItem
     private $quantity = 1;
     private $value;
     private $ounces;
+    private $hsTariffNumber;
+    private $countryOfOrigin;
 
     public function setDescription($description)
     {
@@ -86,5 +88,25 @@ class PackageItem
         $pounds = floor($this->getTotalWeightInPounds());
         $ounces = $this->getTotalWeightInOunces() % 16;
         return array($pounds, $ounces);
+    }
+
+    public function setHSTariffNumber($number)
+    {
+        $this->hsTariffNumber = $number;
+    }
+
+    public function getHSTariffNumber()
+    {
+        return $this->hsTariffNumber;
+    }
+
+    public function setCountryOfOrigin($country)
+    {
+        $this->countryOfOrigin = $country;
+    }
+
+    public function getCountryOfOrigin()
+    {
+        return $this->countryOfOrigin;
     }
 }

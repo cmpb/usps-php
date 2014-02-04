@@ -17,7 +17,17 @@ class PackageItemTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $this->item->getValue());
         $this->assertEquals(0, $this->item->getTotalValue());
         $this->assertEquals(0, $this->item->getWeightInPounds());
-        $this->assertEquals('', $this->item->getDescription());
+        $this->assertEquals(0, $this->item->getWeightInOunces());
+        $this->assertEquals(
+            array(0,0),
+            $this->item->getWeightAsRational()
+        );
+        $this->assertEquals(0, $this->item->getTotalWeightInPounds());
+        $this->assertEquals(0, $this->item->getTotalWeightInOunces());
+        $this->assertEquals(
+            array(0,0),
+            $this->item->getTotalWeightAsRational()
+        );
     }
 
     public function testSetAndGetDescription()
@@ -115,5 +125,17 @@ class PackageItemTest extends \PHPUnit_Framework_TestCase
         list($pounds, $ounces) = $this->item->getTotalWeightAsRational();
         $this->assertEquals(2, $pounds);
         $this->assertEquals(4, $ounces);
+    }
+
+    public function testSetAndGetHSTariffNumber()
+    {
+        $this->item->setHSTariffNumber('132');
+        $this->assertEquals('132', $this->item->getHSTariffNumber());
+    }
+
+    public function testSetAndGetCountryOfOrigin()
+    {
+        $this->item->setCountryOfOrigin('US');
+        $this->assertEquals('US', $this->item->getCountryOfOrigin());
     }
 }
