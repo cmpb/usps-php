@@ -15,6 +15,15 @@ class Package
         'RECTANGULAR',
         'NONRECTANGULAR'
     );
+    private static $sizes = array(
+        'REGULAR',
+        'LARGE'
+    );
+    private $size;
+    private $length;
+    private $width;
+    private $height;
+    private $girth;
 
     public function addItem(PackageItem $item)
     {
@@ -43,5 +52,59 @@ class Package
     public function getContainer()
     {
         return $this->container;
+    }
+
+    public function setSize($size)
+    {
+        if (!in_array($size, self::$sizes)) {
+            throw new \InvalidArgumentException('Invalid Size');
+        }
+
+        $this->size = $size;
+    }
+
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    public function setLength($length)
+    {
+        $this->length = $length;
+    }
+
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    public function setWidth($width)
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    public function setHeight($height)
+    {
+        $this->height = $height;
+    }
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    public function setGirth($girth)
+    {
+        $this->girth = $girth;
+    }
+
+    public function getGirth()
+    {
+        return $this->girth;
     }
 }
