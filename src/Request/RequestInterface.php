@@ -7,35 +7,35 @@ interface RequestInterface
     /**
      * @return string
      */
-    function getApiName();
+    public function getApiName();
 
     /**
      * @return string
      */
-    function getRootElementName();
+    public function getRootElementName();
 
     /**
      * @return string
      */
-    function getXmlBody();
+    public function getXmlBody();
 
     /**
      * @return bool
      */
-    function requiresUserid();
+    public function requiresUserid();
 
     /**
      * @return bool
      */
-    function requiresPassword();
+    public function requiresPassword();
 
     /**
      * @return bool
      */
-    function supportsSecure();
+    public function supportsSecure();
 
     /**
      * @return bool
      */
-    function supportsProduction();
+    public function supportsProduction();
 }
