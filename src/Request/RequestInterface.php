@@ -15,6 +15,11 @@ interface RequestInterface
     function getRootElementName();
 
     /**
+     * @return string
+     */
+    function getXmlBody();
+
+    /**
      * @return bool
      */
     function requiresUserid();
