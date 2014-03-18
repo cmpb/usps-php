@@ -40,6 +40,17 @@ Tests read the USPS_USER environment variable to find the userid.
 USPS_USER='MY_USER' phpunit tests/APITest
 ```
 
+### Running PHP_CodeSniffer
+
+The project is written using PSR1 & PSR2 standards.
+
+```bash
+# checking src files
+phpcs --standard=PSR1,PSR2 src/
+# checking test files
+phpcs --standard=PSR1,PSR2 tests/
+```
+
 ### Implemented APIs
 
 - Address Information
