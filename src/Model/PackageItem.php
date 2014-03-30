@@ -5,11 +5,17 @@ namespace Kohabi\USPS\Model;
 class PackageItem
 {
     private $description;
-    private $quantity = 1;
+    private $quantity;
     private $value;
-    private $ounces;
+    private $weight;
     private $hsTariffNumber;
     private $countryOfOrigin;
+
+    public function __construct()
+    {
+        $this->quantity = 1;
+        $this->weight = new Ounces(0);
+    }
 
     public function setDescription($description)
     {
@@ -46,48 +52,19 @@ class PackageItem
         return $this->getQuantity() * $this->getValue();
     }
 
-    public function setWeightInPounds($pounds)
+    public function setWeight(WeightInterface $weight)
     {
-        $this->ounces = $pounds * 16;
+        $this->weight = $weight;
     }
 
-    public function getWeightInPounds()
+    public function getWeight()
     {
-        return $this->ounces / 16;
+        return $this->weight;
     }
 
-    public function setWeightInOunces($ounces)
+    public function getTotalWeight()
     {
-        $this->ounces = $ounces;
-    }
-
-    public function getWeightInOunces()
-    {
-        return $this->ounces;
-    }
-
-    public function getTotalWeightInPounds()
-    {
-        return $this->getWeightInPounds() * $this->getQuantity();
-    }
-
-    public function getTotalWeightInOunces()
-    {
-        return $this->getWeightInOunces() * $this->getQuantity();
-    }
-
-    public function getWeightAsRational()
-    {
-        $pounds = floor($this->getWeightInPounds());
-        $ounces = $this->getWeightInOunces() % 16;
-        return array($pounds, $ounces);
-    }
-
-    public function getTotalWeightAsRational()
-    {
-        $pounds = floor($this->getTotalWeightInPounds());
-        $ounces = $this->getTotalWeightInOunces() % 16;
-        return array($pounds, $ounces);
+        return $this->weight->scaleBy($this->getQuantity());
     }
 
     public function setHSTariffNumber($number)
