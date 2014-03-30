@@ -1,6 +1,9 @@
 <?php
 
-namespace Kohabi\USPS\Model;
+namespace Kohabi\USPS\Tests\Model;
+
+use Kohabi\USPS\Model\Contact;
+use Kohabi\USPS\Model\Address;
 
 class ContactTest extends \PHPUnit_Framework_TestCase
 {

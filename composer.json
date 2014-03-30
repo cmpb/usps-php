@@ -13,6 +13,11 @@
 			"Kohabi\\USPS\\": "src/"
 		}
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"Kohabi\\USPS\\Tests\\": "tests/"
+		}
+	},
 	"require": {
 		"guzzle/guzzle": "~3.7"
 	}

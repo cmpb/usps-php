@@ -1,6 +1,9 @@
 <?php
 
-namespace Kohabi\USPS\Model;
+namespace Kohabi\USPS\Tests\Model;
+
+use Kohabi\USPS\Model\Package;
+use Kohabi\USPS\Model\PackageItem;
 
 class PackageTest extends \PHPUnit_Framework_TestCase
 {
