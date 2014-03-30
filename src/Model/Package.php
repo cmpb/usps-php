@@ -2,7 +2,7 @@
 
 namespace Kohabi\USPS\Model;
 
-class Package
+class Package implements \Countable
 {
     private $items = array();
     private $container;
@@ -35,9 +35,13 @@ class Package
         return isset($this->items[$n]) ? $this->items[$n] : null;
     }
 
-    public function getNumberOfItems()
+    public function count()
     {
-        return count($this->items);
+        $count = 0;
+        foreach ($this->items as $item) {
+            $count += $item->getQuantity();
+        }
+        return $count;
     }
 
     public function setContainer($container)
