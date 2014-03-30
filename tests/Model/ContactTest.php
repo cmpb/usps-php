@@ -3,6 +3,7 @@
 namespace Kohabi\USPS\Tests\Model;
 
 use Kohabi\USPS\Model\Contact;
+use Kohabi\USPS\Model\Fullname;
 use Kohabi\USPS\Model\Address;
 
 class ContactTest extends \PHPUnit_Framework_TestCase
@@ -14,47 +15,26 @@ class ContactTest extends \PHPUnit_Framework_TestCase
         $this->contact = new Contact();
     }
 
-    public function testSetAndGetFirstName()
+    public function testName()
     {
-        $this->contact->setFirstName('John');
-        $this->assertEquals('John', $this->contact->getFirstName());
+        $name = new Fullname('Jon Snow');
+        $this->contact->setName($name);
+        $this->assertSame($name, $this->contact->getName());
     }
 
-    public function testSetAndGetLastName()
-    {
-        $this->contact->setLastName('Doe');
-        $this->assertEquals('Doe', $this->contact->getLastName());
-    }
-
-    public function testSetAndGetName()
-    {
-        $this->contact->setName('John Doe');
-        $this->assertEquals('John Doe', $this->contact->getName());
-    }
-
-    public function testGetNameWithFirstAndLastSet()
-    {
-        $this->contact->setFirstName('John');
-        $this->contact->setLastName('Doe');
-        $this->assertEquals(
-            'John Doe',
-            $this->contact->getName()
-        );
-    }
-
-    public function testSetAndGetPhoneNumber()
+    public function testPhoneNumber()
     {
         $this->contact->setPhoneNumber('555 555 5555');
         $this->assertEquals('555 555 5555', $this->contact->getPhoneNumber());
     }
 
-    public function testSetAndGetEmail()
+    public function testEmail()
     {
         $this->contact->setEmail('john.doe@mail.com');
         $this->assertEquals('john.doe@mail.com', $this->contact->getEmail());
     }
 
-    public function testSetAndGetAddress()
+    public function testAddress()
     {
         $address = new Address();
         $this->contact->setAddress($address);

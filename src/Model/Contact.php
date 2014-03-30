@@ -4,51 +4,19 @@ namespace Kohabi\USPS\Model;
 
 class Contact
 {
-    private $firstName;
-    private $lastName;
-    private $fullName;
+    private $name;
     private $phoneNumber;
     private $address;
     private $email;
 
-    public function setFirstName($firstName)
+    public function setName(Fullname $name)
     {
-        $this->firstName = $firstName;
-        $this->fullName = null;
-    }
-
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-        $this->fullName = null;
-    }
-
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    public function setName($name)
-    {
-        $this->fullName = $name;
-        $this->firstName = null;
-        $this->lastName = null;
+        $this->name = $name;
     }
 
     public function getName()
     {
-        if ($this->fullName) {
-            return $this->fullName;
-        }
-        if ($this->firstName && $this->lastName) {
-            return $this->fullName = $this->firstName . ' ' . $this->lastName;
-        }
-        return null;
+        return $this->name;
     }
 
     public function setPhoneNumber($phoneNumber)
