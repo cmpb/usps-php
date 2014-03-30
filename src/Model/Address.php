@@ -2,13 +2,10 @@
 
 namespace Kohabi\USPS\Model;
 
-class Address
+class Address implements \ArrayAccess
 {
     private $company;
-    private $fullName;
-    private $firstName;
-    private $lastName;
-    private $lines = array();
+    private $line = array();
     private $state;
     private $city;
     private $postalCode;
@@ -25,95 +22,58 @@ class Address
         return $this->company;
     }
 
-    public function setFirstName($firstName)
+    public function setRecipient(Fullname $recipient)
     {
-        $this->firstName = $firstName;
-        $this->fullName = null;
+        $this->recipient = $recipient;
     }
 
-    public function getFirstName()
+    public function getRecipient()
     {
-        return $this->firstName;
+        return $this->recipient;
     }
 
-    public function setLastName($lastName)
+    public function offsetExists($offset)
     {
-        $this->lastName = $lastName;
-        $this->fullName = null;
+        return isset($this->line[$offset]);
     }
 
-    public function getLastName()
+    public function offsetGet($offset)
     {
-        return $this->lastName;
+       return $this->offsetExists($offset) ? $this->line[$offset] : null; 
     }
 
-    public function setName($name)
+    public function offsetSet($offset, $value)
     {
-        $this->fullName = $name;
-    }
-
-    public function getName()
-    {
-        if ($this->fullName) {
-            return $this->fullName;
+        if ($offset === null) {
+            $this->line[] = $value;
+        } else {
+            $this->line[$offset] = $value;
         }
-        if ($this->firstName && $this->lastName) {
-            return $this->fullName = $this->firstName . ' ' . $this->lastName;
-        }
-        return null;
     }
 
-    public function setLines(array $lines)
+    public function offsetUnset($offset)
     {
-        $this->lines = $lines;
+        unset($this->line[$offset]);
     }
 
-    public function getLines()
+    public function setLine1($line)
     {
-        return $this->lines;
-    }
-
-    public function addLine($line)
-    {
-        $this->lines[] = $line;
-    }
-
-    /**
-     * @param int $n 0-indexed address line
-     * @return mixed
-     */
-    public function getLine($n)
-    {
-        return isset($this->lines[$n]) ? $this->lines[$n] : null;
-    }
-
-    /**
-     * @param int $n 0-indexed address line
-     * @param string $line
-     */
-    public function setLine($n, $line)
-    {
-        $this->lines[$n] = $line;
-    }
-
-    public function setLine1($line1)
-    {
-        $this->setLine(0, $line1);
-    }
-
-    public function setLine2($line2)
-    {
-        $this->setLine(1, $line2);
+        $this[0] = $line;
     }
 
     public function getLine1()
     {
-        return $this->getLine(0);
+        return $this[0];
+    }
+
+    public function setLine2($line)
+    {
+        $this[1] = $line;
     }
 
     public function getLine2()
     {
-        return $this->getLine(1);
+        return $this[1];
     }
 
     public function setState($state)
