@@ -39,7 +39,7 @@ class Address implements \ArrayAccess
 
     public function offsetGet($offset)
     {
-       return $this->offsetExists($offset) ? $this->line[$offset] : null; 
+        return $this->offsetExists($offset) ? $this->line[$offset] : null;
     }
 
     public function offsetSet($offset, $value)
